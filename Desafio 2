@@ -1,0 +1,27 @@
+def calcular_parcela_sac(valor_financiado, taxa_juros, meses):
+    amortizacao = valor_financiado / meses
+    parcelas = []
+    for i in range(meses):
+        juros = valor_financiado * taxa_juros
+        parcela_mensal = amortizacao + juros
+        parcelas.append(parcela_mensal)
+        valor_financiado -= amortizacao
+    return parcelas
+
+def main():
+    valor_financiado = float(input("Digite o valor a ser financiado: "))
+    taxa_juros = float(input("Digite a taxa de juros ao mês (em decimal): "))
+    meses = int(input("Digite a quantidade de meses para pagar: "))
+
+    parcelas = calcular_parcela_sac(valor_financiado, taxa_juros, meses)
+
+    print("\nValor da parcela: R$ {:.2f}".format(parcelas[0]))
+    print("Valor final a ser pago: R$ {:.2f}".format(sum(parcelas)))
+
+    print("\nTabela SAC de Amortização:")
+    print("Mês | Parcela")
+    for i, parcela in enumerate(parcelas, start=1):
+        print("{:<3} | R$ {:.2f}".format(i, parcela))
+
+if __name__ == "__main__":
+    main()
