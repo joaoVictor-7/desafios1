@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimativa de Gastos Anual</title>
+</head>
+<body>
+    <h2>Estimativa de Gastos Anual</h2>
+    <form id="gastosForm">
+        <label for="aluguel">Aluguel:</label>
+        <input type="number" id="aluguel" name="aluguel"><br><br>
+
+        <label for="agua">Água:</label>
+        <input type="number" id="agua" name="agua"><br><br>
+
+        <label for="energia">Energia Elétrica:</label>
+        <input type="number" id="energia" name="energia"><br><br>
+
+        <label for="folha_pagamento">Folha de Pagamento:</label>
+        <input type="number" id="folha_pagamento" name="folha_pagamento"><br><br>
+
+        <label for="impostos">Impostos:</label>
+        <input type="number" id="impostos" name="impostos"><br><br>
+
+        <label for="outros">Outros:</label>
+        <input type="number" id="outros" name="outros"><br><br>
+
+        <label for="meses">Número de Meses:</label>
+        <input type="number" id="meses" name="meses"><br><br>
+
+        <input type="button" value="Calcular" onclick="calcularEstimativaAnual()">
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularEstimativaAnual() {
+            var aluguel = parseFloat(document.getElementById('aluguel').value) || 0;
+            var agua = parseFloat(document.getElementById('agua').value) || 0;
+            var energia = parseFloat(document.getElementById('energia').value) || 0;
+            var folhaPagamento = parseFloat(document.getElementById('folha_pagamento').value) || 0;
+            var impostos = parseFloat(document.getElementById('impostos').value) || 0;
+            var outros = parseFloat(document.getElementById('outros').value) || 0;
+            var meses = parseInt(document.getElementById('meses').value) || 0;
+
+            var total = (aluguel + agua + energia + folhaPagamento + impostos + outros) * meses;
+
+            document.getElementById('resultado').innerHTML = "Estimativa de gastos anual: R$" + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
